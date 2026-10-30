@@ -29,13 +29,9 @@ export function nightsOnDisk(runsDir: string): string[] {
   }
 }
 
-// Counts come from the digest reader. A night that cannot be read yet shows as null ('—'), never dropped.
+// Counts come from the digest reader. A night it can't find shows as null ('—'), never dropped.
 function countsFor(runsDir: string, night: string): Record<RunStatus, number> | null {
-  try {
-    return readNight(runsDir, night)?.counts ?? null;
-  } catch {
-    return null;
-  }
+  return readNight(runsDir, night)?.counts ?? null;
 }
 
 export function readStatus(config: RigConfig): Status {
