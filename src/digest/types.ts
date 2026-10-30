@@ -28,6 +28,7 @@ export type Night = {
   night: string; // YYYY-MM-DD
   rows: DigestRow[]; // sorted by job; page and JSON use this order as-is (ADR 0001)
   badLines: number; // lines that did not parse, counted and never thrown
+  counts: Record<RunStatus, number>; // parsed lines per status, for the board's ok / retry / fail
 };
 
 // null: no runs/<night>.jsonl (or night is not YYYY-MM-DD). The routes answer 404.
